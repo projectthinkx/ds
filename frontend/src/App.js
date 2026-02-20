@@ -29,7 +29,7 @@ import PharmacyBilling from './pages/PharmacyBilling';
 import { Toaster } from './components/ui/sonner';
 import './App.css';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
+const BACKEND_URL = import.meta.env.VITE_API_URL;
 export const API = `${BACKEND_URL}/api`;
 
 console.log('Backend URL:', BACKEND_URL);
