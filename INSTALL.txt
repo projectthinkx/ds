@@ -1,0 +1,213 @@
+# DENTALSUTHRA - COMPLETE INSTALLATION GUIDE
+# For Windows 11 - Fresh Installation
+
+================================================================================
+                        PART 1: DELETE PREVIOUS INSTALLATION
+================================================================================
+
+If you tried installing before, delete everything first:
+
+1. Delete folder: C:\DentalSuthra (if exists)
+
+2. Delete MongoDB data:
+   - Open Command Prompt
+   - Type: mongosh
+   - Type: use dentalsuthra
+   - Type: db.dropDatabase()
+   - Type: exit
+
+3. Restart your PC
+
+================================================================================
+                        PART 2: INSTALL REQUIRED SOFTWARE
+================================================================================
+
+INSTALL THESE 3 PROGRAMS (in order):
+
+------------------------------------------------------------------------------
+A. PYTHON 3.11
+------------------------------------------------------------------------------
+   1. Go to: https://www.python.org/downloads/
+   2. Click "Download Python 3.11.x"
+   3. Run the downloaded file
+   4. IMPORTANT: Check the box "Add Python to PATH" at the bottom
+   5. Click "Install Now"
+   6. Wait for installation
+   7. Click "Close"
+
+   To verify: Open Command Prompt, type: python --version
+   You should see: Python 3.11.x
+
+------------------------------------------------------------------------------
+B. NODE.JS
+------------------------------------------------------------------------------
+   1. Go to: https://nodejs.org/
+   2. Click the "LTS" button (left side, green)
+   3. Run the downloaded file
+   4. Click "Next" on all screens
+   5. Click "Install"
+   6. Click "Finish"
+
+   To verify: Open NEW Command Prompt, type: node --version
+   You should see: v20.x.x or higher
+
+------------------------------------------------------------------------------
+C. MONGODB
+------------------------------------------------------------------------------
+   1. Go to: https://www.mongodb.com/try/download/community
+   2. Select:
+      - Version: 7.0.x (latest)
+      - Platform: Windows
+      - Package: msi
+   3. Click "Download"
+   4. Run the downloaded file
+   5. Click "Next"
+   6. Accept license, click "Next"
+   7. Choose "Complete"
+   8. IMPORTANT: Check "Install MongoDB as a Service"
+   9. Check "Install MongoDB Compass" (optional)
+   10. Click "Next", then "Install"
+   11. Click "Finish"
+
+   MongoDB will now run automatically in background.
+
+================================================================================
+                        PART 3: SETUP DENTALSUTHRA
+================================================================================
+
+------------------------------------------------------------------------------
+STEP 1: DOWNLOAD AND EXTRACT
+------------------------------------------------------------------------------
+   1. Download DentalSuthra ZIP from Emergent
+   2. Right-click the ZIP file
+   3. Click "Extract All"
+   4. Extract to: C:\DentalSuthra
+   
+   Your folder should look like:
+   C:\DentalSuthra\
+   ├── backend\
+   ├── frontend\
+   ├── setup_admin.py
+   └── ...
+
+------------------------------------------------------------------------------
+STEP 2: INSTALL BACKEND
+------------------------------------------------------------------------------
+   1. Open Command Prompt (press Windows key, type "cmd", press Enter)
+   2. Type these commands ONE BY ONE:
+
+   cd C:\DentalSuthra\backend
+   python -m venv venv
+   venv\Scripts\activate
+   pip install -r requirements.txt
+
+   Wait for installation to complete (2-5 minutes)
+
+------------------------------------------------------------------------------
+STEP 3: INSTALL FRONTEND
+------------------------------------------------------------------------------
+   1. Open NEW Command Prompt
+   2. Type these commands:
+
+   cd C:\DentalSuthra\frontend
+   npm install
+
+   Wait for installation to complete (3-5 minutes)
+
+------------------------------------------------------------------------------
+STEP 4: RUN SETUP SCRIPT
+------------------------------------------------------------------------------
+   1. Open NEW Command Prompt
+   2. Type these commands:
+
+   cd C:\DentalSuthra
+   backend\venv\Scripts\activate
+   python setup_admin.py
+
+   This will:
+   - Create the database
+   - Create admin user (admin@clinic.com / admin123)
+   - Create all required default data
+   - Create .env configuration files
+
+================================================================================
+                        PART 4: START THE APPLICATION
+================================================================================
+
+You need TWO Command Prompt windows running at the same time.
+
+------------------------------------------------------------------------------
+WINDOW 1: START BACKEND
+------------------------------------------------------------------------------
+   Open Command Prompt and type:
+
+   cd C:\DentalSuthra\backend
+   venv\Scripts\activate
+   python -m uvicorn server:app --host 0.0.0.0 --port 8001
+
+   You should see:
+   INFO:     Application startup complete.
+   INFO:     Uvicorn running on http://0.0.0.0:8001
+
+   KEEP THIS WINDOW OPEN!
+
+------------------------------------------------------------------------------
+WINDOW 2: START FRONTEND
+------------------------------------------------------------------------------
+   Open NEW Command Prompt and type:
+
+   cd C:\DentalSuthra\frontend
+   npm start
+
+   Wait 1-2 minutes. You should see:
+   Compiled successfully!
+   Local: http://localhost:3000
+
+   Browser will open automatically.
+
+   KEEP THIS WINDOW OPEN!
+
+------------------------------------------------------------------------------
+STEP 5: LOGIN
+------------------------------------------------------------------------------
+   1. Browser opens to http://localhost:3000
+   2. Enter:
+      Email: admin@clinic.com
+      Password: admin123
+   3. Click Login
+
+================================================================================
+                        TROUBLESHOOTING
+================================================================================
+
+PROBLEM: "python is not recognized"
+SOLUTION: Reinstall Python and CHECK "Add Python to PATH"
+
+PROBLEM: "npm is not recognized"  
+SOLUTION: Restart your PC after installing Node.js
+
+PROBLEM: MongoDB connection error
+SOLUTION: 
+   1. Press Windows + R
+   2. Type: services.msc
+   3. Find "MongoDB Server"
+   4. Right-click -> Start
+
+PROBLEM: "Port 8001 already in use"
+SOLUTION: Restart your PC
+
+PROBLEM: "Failed to fetch data"
+SOLUTION:
+   1. Close all Command Prompt windows
+   2. Run setup_admin.py again
+   3. Start backend again
+   4. Start frontend again
+
+================================================================================
+                        LOGIN CREDENTIALS
+================================================================================
+
+Email:    admin@clinic.com
+Password: admin123
+
+================================================================================

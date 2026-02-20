@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+@layer base {
+    :root {
+        --background: 210 20% 98%;
+        --foreground: 222 84% 5%;
+        --card: 0 0% 100%;
+        --card-foreground: 222 84% 5%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 84% 5%;
+        --primary: 222 84% 5%;
+        --primary-foreground: 210 20% 98%;
+        --secondary: 210 40% 96%;
+        --secondary-foreground: 222 84% 5%;
+        --muted: 210 40% 96%;
+        --muted-foreground: 215 16% 47%;
+        --accent: 217 91% 60%;
+        --accent-foreground: 222 84% 5%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 210 20% 98%;
+        --border: 214 32% 91%;
+        --input: 214 32% 91%;
+        --ring: 166 76% 46%;
+        --radius: 0.75rem;
+        --emerald: 166 76% 46%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-heading;
+    }
+}
+
+@layer utilities {
+    .font-heading {
+        font-family: 'Manrope', sans-serif;
+    }
+    .font-body {
+        font-family: 'IBM Plex Sans', sans-serif;
+    }
+}

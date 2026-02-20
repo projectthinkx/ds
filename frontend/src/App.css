@@ -1,0 +1,50 @@
+.glass-card {
+    backdrop-filter: blur(24px);
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.stat-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.sidebar-link {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link:hover {
+    background-color: rgba(5, 150, 105, 0.1);
+    color: #059669;
+}
+
+.sidebar-link.active {
+    background-color: #059669;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #059669;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+    background-color: #047857;
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.table-row {
+    transition: background-color 0.2s ease;
+}
+
+.table-row:hover {
+    background-color: rgba(241, 245, 249, 0.5);
+}
